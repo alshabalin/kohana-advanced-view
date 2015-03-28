@@ -88,6 +88,13 @@ class Advanced_Controller extends Kohana_Controller {
     $mime       = File::mime_by_ext($format) ?: 'text/html';
 
     $this->response->view([
+      'basedir'   => $controller,
+      'directory' => $directory,
+      'action'    => $action,
+      'format'    => $format,
+    ]);
+
+    $this->response->view->set([
       'basedir'    => $controller,
       'directory'  => $directory,
       'controller' => $controller,
@@ -101,6 +108,7 @@ class Advanced_Controller extends Kohana_Controller {
       'params'     => $this->request->param(),
       'query'      => $this->request->query(),
     ]);
+
 
     $this->format = $format;
 
