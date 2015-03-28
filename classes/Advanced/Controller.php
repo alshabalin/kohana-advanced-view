@@ -88,9 +88,18 @@ class Advanced_Controller extends Kohana_Controller {
     $mime       = File::mime_by_ext($format) ?: 'text/html';
 
     $this->response->view([
-      'basedir' => $controller,
-      'action'  => $action,
-      'format'  => $format,
+      'basedir'    => $controller,
+      'directory'  => $directory,
+      'controller' => $controller,
+      'action'     => $action,
+      'format'     => $format,
+      'request'    => $this->request,
+      'method'     => $this->request->method(),
+      'secure'     => $this->request->secure(),
+      'route'      => $this->request->route(),
+      'route_name' => Route::name($this->request->route()),
+      'params'     => $this->request->param(),
+      'query'      => $this->request->query(),
     ]);
 
     $this->format = $format;
