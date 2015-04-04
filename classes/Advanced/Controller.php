@@ -76,6 +76,11 @@ class Advanced_Controller extends Kohana_Controller {
     $this->redirect($url);
   }
 
+  public function redirect_back($flash = NULL)
+  {
+    $this->redirect_to(getenv('HTTP_REFERER'), $flash);
+  }
+
 
   protected $_before_action = NULL;
 
