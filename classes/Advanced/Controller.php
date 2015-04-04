@@ -63,13 +63,16 @@ class Advanced_Controller extends Kohana_Controller {
     $this->response->body($this->response->view->render($template, $data));
   }
 
-  public function redirect_to($url, $flash)
+  public function redirect_to($url, $flash = NULL)
   {
     if ($url instanceof ORM)
     {
       $url = Route::url_for($url);
     }
-    Session::instance()->set('flash', $flash);
+    if ($flash !== NULL)
+    {
+      Flash::message($flash);
+    }
     $this->redirect($url);
   }
 
