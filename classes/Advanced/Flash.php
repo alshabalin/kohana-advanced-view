@@ -22,7 +22,7 @@ class Advanced_Flash {
   {
     if (static::$_type === NULL)
     {
-      static::$_type = return Session::instance()->get_once('flash_type');
+      static::$_type = Session::instance()->get_once('flash_type');
     }
 
     return static::$_type;
