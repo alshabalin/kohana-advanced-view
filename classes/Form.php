@@ -1,3 +1,3 @@
 <?php
 
-class Form extends Avdanced_Form { }
+class Form extends Advanced_Form { }
