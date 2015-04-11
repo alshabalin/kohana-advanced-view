@@ -45,33 +45,36 @@ class Advanced_Form extends Kohana_Form {
 
   public static function input($name, $value = NULL, array $attributes = NULL)
   {
-    if (static::$model && $value === NULL)
+    if (static::$model)
     {
       if (isset(static::$model->table_columns()[$name]))
       {
-        switch (Arr::get($attributes, 'type'))
+        if ($value === NULL)
         {
-          case 'checkbox':
-          case 'radio':
-            $attributes['checked'] = (static::$model->{$name} == $value);
-            break;
-
-          case '':
-          case 'text':
-          case 'hidden':
-          case 'email':
-          case 'url':
-          case 'search':
-          case 'date':
-          case 'datetime':
-          case 'time':
-          case 'month':
-          case 'week':
-          case 'color':
-          case 'number':
-          case 'range':
-            $value = static::$model->{$name};
-            break;
+          switch (Arr::get($attributes, 'type'))
+          {
+            case 'checkbox':
+            case 'radio':
+              $attributes['checked'] = (static::$model->{$name} == $value);
+              break;
+  
+            case '':
+            case 'text':
+            case 'hidden':
+            case 'email':
+            case 'url':
+            case 'search':
+            case 'date':
+            case 'datetime':
+            case 'time':
+            case 'month':
+            case 'week':
+            case 'color':
+            case 'number':
+            case 'range':
+              $value = static::$model->{$name};
+              break;
+          }
         }
 
         $attributes['id'] = static::$model_name . '_' . URL::title($name);
