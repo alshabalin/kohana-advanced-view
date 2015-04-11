@@ -45,7 +45,7 @@ class Advanced_Form extends Kohana_Form {
 
   public static function input($name, $value = NULL, array $attributes = NULL)
   {
-    if (static::$model)
+    if (static::$model && $value === NULL)
     {
       if (isset(static::$model->table_columns()[$name]))
       {
